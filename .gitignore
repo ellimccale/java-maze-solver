@@ -1,0 +1,30 @@
+# OS and Editor folders
+._*
+.cache
+.DS_Store
+*.log
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
