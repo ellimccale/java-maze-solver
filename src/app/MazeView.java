@@ -6,8 +6,8 @@ import edu.princeton.cs.algs4.StdDraw;
 
 /**
  * Renders the walls of a {@link Maze} onto an StdDraw canvas based on the
- * underlying graph structure. For each grid cell (vertex), MazeView will
- * draw the four surrounding walls, except where the graph has an edge.
+ * underlying graph structure. For each grid cell (vertex), MazeView will draw
+ * the four surrounding walls, except where the graph has an edge.
  *
  * @author Elli Steck
  */
@@ -19,23 +19,22 @@ public class MazeView {
 	private final Graph graph;
 
 	/**
-     * Constructs a new MazeView for the given Maze.
-     *
-     * @param maze the Maze instance to render
-     */
+	 * Constructs a new MazeView for the given Maze.
+	 *
+	 * @param maze the Maze instance to render
+	 */
 	public MazeView(Maze maze) {
 		this.maze = maze;
 		this.graph = maze.getGraph();
 	}
 
 	/**
-	 * Draws all walls of the maze onto the StdDraw canvas. For each cell,
-	 * checks its four neighbor directions and draws a wall line segment
-	 * whenever there is no graph edge in that direction.
+	 * Draws all walls of the maze onto the StdDraw canvas. For each cell, checks
+	 * its four neighbor directions and draws a wall line segment whenever there is
+	 * no graph edge in that direction.
 	 * 
-	 * @throws IllegalStateException if the number of vertices in the graph is
-	 * 								 not equal to the number of cells in
-	 * 								 the grid
+	 * @throws IllegalStateException if the number of vertices in the graph is not
+	 *                               equal to the number of cells in the grid
 	 */
 	public void draw() throws IllegalStateException {
 		int rows = maze.getRows();
@@ -51,9 +50,9 @@ public class MazeView {
 			double y = maze.rowOf(vertex) + OFFSET;
 
 			/*
-			 * The StdDraw canvas is built on Cartestian coordinates. (0, 0) is
-			 * bottom-left, so vertex 0 is also bottom-left. The final vertex
-			 * will be at the top-right corner of the canvas.
+			 * The StdDraw canvas is built on Cartestian coordinates. (0, 0) is bottom-left,
+			 * so vertex 0 is also bottom-left. The final vertex will be at the top-right
+			 * corner of the canvas.
 			 */
 
 			if (Debug.ON) {
@@ -80,8 +79,8 @@ public class MazeView {
 	}
 
 	/**
-	 * Returns {@code true} if there is a wall between vertices v and w (i.e.,
-	 * no edge in the graph), {@code false} if an edge exists (passage).
+	 * Returns {@code true} if there is a wall between vertices v and w (i.e., no
+	 * edge in the graph), {@code false} if an edge exists (passage).
 	 *
 	 * @param v a vertex ID in the maze graph
 	 * @param w the neighboring vertex ID to check against

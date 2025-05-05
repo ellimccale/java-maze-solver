@@ -20,19 +20,23 @@ public class Debug {
 	}
 
 	public static void print(Object x) {
-		if (ON) StdOut.print(x);
+		if (ON)
+			StdOut.print(x);
 	}
 
 	public static void println() {
-		if (ON) StdOut.println();
+		if (ON)
+			StdOut.println();
 	}
 
 	public static void println(Object x) {
-		if (ON) StdOut.println(x);
+		if (ON)
+			StdOut.println(x);
 	}
 
 	public static void printf(String fmt, Object... args) {
-		if (ON) StdOut.printf(Locale.US, fmt, args);
+		if (ON)
+			StdOut.printf(Locale.US, fmt, args);
 	}
 
 }
