@@ -10,9 +10,9 @@ import edu.princeton.cs.algs4.StdDraw;
 /**
  * Entry point for the Maze application.
  * <p>
- * Parses command-line arguments to set verbose (debug) mode, grid dimensions,
- * then configures the StdDraw canvas, generates a Maze, renders it, and
- * animates its solution.
+ * Parses command-line arguments to set debug mode, grid dimensions, then
+ * configures the StdDraw canvas, generates a Maze, renders it, and animates
+ * its solution.
  * <p>
  * Usage:
  * <pre>
@@ -28,52 +28,86 @@ public class Main {
 
 	public static final int HEIGHT = 800;
 
+	private static int rows, cols;
+
 	public static void main(String[] args) {
 		List<String> params = new ArrayList<>(Arrays.asList(args));
 
-		// Optionally enable debugging
+		// Enables debugging
 	    if (params.remove("--debug")) {
 	        Debug.ON = true;
 	    }
 
 	    // Check for valid remaining args
 	    if (params.size() != 2) {
-	        System.err.println(
-	        		"Usage: java app.Main <rows> <cols> [--debug]");
-	        System.exit(1);
+			printError(
+	        		"One or more parameters is missing. Please follow the usage pattern"
+	        		+ "\n    java Main.java <rows> <cols> [--debug]");
 	    }
-
-	    int rows, cols;
 
 	    try {
 	        rows = Integer.parseInt(params.get(0));
 	        cols = Integer.parseInt(params.get(1));
-	    } catch (NumberFormatException e) {
-	        System.err.println("Error: rows and cols must be integers.");
-	        System.exit(1);
-	        return; // Unreachable, but silences the compiler
+	    } catch (IllegalArgumentException e) {
+			printError("rows and cols must both be integers ≥ 2");
+	        return;
 	    }
 
-	    // Validate args range
-	    if (rows < 2 || cols < 2) {
-	        System.err.println("Error: rows and cols must both be ≥ 2.");
-	        System.exit(1);
-	    }
+		Maze maze;
 
+		try {
+			maze = new Maze(rows, cols);
+			Debug.print(maze.getGraph().toString());
+		} catch (IllegalArgumentException e) {
+			printError(e);
+	        return;
+		}
+
+		setupGUI();
+
+		try {
+			maze.draw();
+			maze.solve();
+		} catch (IllegalStateException e) {
+			printError(e);
+	        return;
+		}
+	}
+
+	/**
+	 * Prints a critical error to the console and exits the program.
+	 * 
+	 * @param e the exception that occurred
+	 */
+	private static void printError(RuntimeException e) {
+		System.err.println("Error: " + e);
+        System.exit(1);
+	}
+
+	/**
+	 * Overloaded method.
+	 * 
+	 * @param e a string representing the error message
+	 */
+	private static void printError(String e) {
+		System.err.println("Error: " + e);
+        System.exit(1);
+	}
+
+	/**
+	 * Initializes the StdDraw canvas with double buffering enabled, and sets
+	 * the canvas scale based on the number of rows and columns in the maze.
+	 */
+	private static void setupGUI() {
 		int height = HEIGHT;
-		int width = (int) Math.round(1.0 * height * cols / rows);
+		int width = (int) Math.round(1.0 * HEIGHT * cols / rows);
 
+		StdDraw.setTitle("Maze");
 		StdDraw.enableDoubleBuffering();
 		StdDraw.setCanvasSize(width, height);
+
 		StdDraw.setXscale(0, cols + 2);
 		StdDraw.setYscale(0, rows + 2);
-
-		Maze maze = new Maze(rows, cols);
-
-		Debug.print(maze.getGraph().toString());
-
-		maze.draw();
-		maze.solve();
 	}
 
 }

@@ -5,7 +5,6 @@ import java.util.Locale;
 import edu.princeton.cs.algs4.StdOut;
 
 /**
- * <p>
  * This class is used as a utility to print debug statements to the console
  * depending on whether or not the DEBUG flag is provided as an argument to the
  * program's entrypoint in app.Main.

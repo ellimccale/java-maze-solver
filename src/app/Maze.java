@@ -13,7 +13,7 @@ import edu.princeton.cs.algs4.Graph;
  * <p>
  * Each cell in the maze corresponds to a vertex in the graph. A randomized
  * depth-first search algorithm (recursive backtracker) is used to generate a
- * cycle-free spanning tree that guarantees a path between any two cells.
+ * cycle-free spanning tree that guarantees a path through the maze.
  * <p>
  * Maze drawing and solving are delegated to MazeView and MazeSolver,
  * respectively.
@@ -72,7 +72,7 @@ public class Maze {
 
 		/*
 		 * Clone a new list from the {@code DELTAS} array and shuffle it,
-		 * creating a random order of directions to visit. This approach is
+		 * creating a random order of directions to visit. This step is
 		 * responsible for generating unique maze designs.
 		 * 
 		 * NOTE: It's necessary to clone a NEW list, since it appears that
@@ -195,7 +195,7 @@ public class Maze {
     }
 
     /**
-     * Returns the underlying graph representing maze connectivity.
+     * Returns the underlying graph representing the maze's structure.
      *
      * @return the Graph of maze cells and passages
      */

@@ -6,12 +6,14 @@ import edu.princeton.cs.algs4.StdDraw;
 
 /**
  * Renders the walls of a {@link Maze} onto an StdDraw canvas based on the
- * underlying graph connectivity. For each grid cell (vertex), MazeView will
+ * underlying graph structure. For each grid cell (vertex), MazeView will
  * draw the four surrounding walls, except where the graph has an edge.
  *
  * @author Elli Steck
  */
 public class MazeView {
+
+	private final static double OFFSET = 1;
 
 	private final Maze maze;
 	private final Graph graph;
@@ -45,8 +47,8 @@ public class MazeView {
 
 		for (int vertex = 0; vertex < graph.V(); vertex++) {
 			// Shift x and y by +1 to offset the canvas scale
-			double x = maze.colOf(vertex) + 1;
-			double y = maze.rowOf(vertex) + 1;
+			double x = maze.colOf(vertex) + OFFSET;
+			double y = maze.rowOf(vertex) + OFFSET;
 
 			/*
 			 * The StdDraw canvas is built on Cartestian coordinates. (0, 0) is

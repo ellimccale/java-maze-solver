@@ -7,8 +7,8 @@ import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdRandom;
 
 /**
- * Uses breadth-first search on the graph to find and animate a path from a
- * starting cell to a destination cell.
+ * Performs a breadth-first search on the graph to find and animate the shortest
+ * path from the starting cell to ending cell.
  * <p>
  * The solver picks the start vertex at (0, 0) and a random goal vertex in the
  * second half of the grid. It then uses
@@ -46,7 +46,7 @@ public class MazeSolver {
 	 *   <li>Chooses the start vertex at 0 (0, 0).
 	 *   <li>Chooses a random destination vertex in the second half of the grid.
 	 *   <li>Instantiates {@link BreadthFirstPaths} on the maze graph.
-	 *   <li>If a path exists, iterates over it, drawing a red line between
+	 *   <li>If a path exists, iterates over it, drawing a line between
 	 *       successive cell centers and pausing between steps for animation.
 	 * </ol>
 	 */
@@ -86,7 +86,7 @@ public class MazeSolver {
 
 	/**
      * Computes breadth-first paths from the start vertex and animates the
-     * shortest path to the end vertex in red.
+     * shortest path to the end vertex.
      *
      * @param s the starting vertex ID
      * @param e the ending vertex ID
